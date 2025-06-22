@@ -1,0 +1,15 @@
+{
+  "name": "mcp-connector",
+  "version": "1.0.0",
+  "description": "MCP Connector for TypingMind",
+  "main": "server.js",
+  "scripts": {
+    "start": "npx @typingmind/mcp"
+  },
+  "dependencies": {
+    "@typingmind/mcp": "latest"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
