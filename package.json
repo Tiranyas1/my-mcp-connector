@@ -1,13 +1,15 @@
 {
-  "name": "mcp-connector",
+  "name": "mcp-connector-playwright",
   "version": "1.0.0",
-  "description": "MCP Connector for TypingMind",
+  "description": "MCP Connector with Playwright for TypingMind",
   "main": "server.js",
   "scripts": {
-    "start": "npx @typingmind/mcp"
+    "start": "node server.js"
   },
   "dependencies": {
-    "@typingmind/mcp": "latest"
+    "@typingmind/mcp": "latest",
+    "@executeautomation/playwright-mcp-server": "latest",
+    "express": "^4.18.2"
   },
   "engines": {
     "node": "18.x"
