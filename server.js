@@ -11,7 +11,7 @@ console.log('=== MCP Connector Starting ===');
 console.log(`Port: ${PORT}`);
 console.log(`Auth token configured: ${authToken ? 'Yes' : 'No'}`);
 
-// Health check endpoint
+// Health check endpoint (original)
 app.get('/', (req, res) => {
   res.json({ 
     status: 'MCP Connector with Playwright is running',
@@ -22,10 +22,32 @@ app.get('/', (req, res) => {
   });
 });
 
+// Ping endpoint for TypingMind connection test
+app.get('/ping', (req, res) => {
+  res.json({ 
+    status: 'ok',
+    message: 'MCP Connector is alive',
+    timestamp: new Date().toISOString(),
+    authToken: 'configured'
+  });
+});
+
+// Health endpoint (alternative)
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'healthy',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Start the HTTP server first
 app.listen(PORT, () => {
   console.log(`✅ Health check server running on port ${PORT}`);
   console.log(`🔐 Using auth token: mcp-secret-2025-abc123xyz`);
+  console.log(`🌐 Available endpoints:`);
+  console.log(`   - https://my-mcp-connector.onrender.com/`);
+  console.log(`   - https://my-mcp-connector.onrender.com/ping`);
+  console.log(`   - https://my-mcp-connector.onrender.com/health`);
   
   // Start MCP Connector after HTTP server is ready
   console.log('🚀 Starting MCP Connector with Playwright...');
